@@ -131,7 +131,7 @@ function checkForUpdates(inBackground, window, logFilePath, options) {
 		autoUpdateLogger_.info(`Latest version: ${release.version}`);
 		autoUpdateLogger_.info('Is Pre-release:', release.prerelease);
 
-		if (compareVersions(release.version, packageInfo.version) <= 0) {
+		if (false && compareVersions(release.version, packageInfo.version) <= 0) {
 			if (!checkInBackground_) {
 				await dialog.showMessageBox({
 					type: 'info',
@@ -140,6 +140,7 @@ function checkForUpdates(inBackground, window, logFilePath, options) {
 				});
 			}
 		} else {
+			// release.notes = " example short release notes " // for testing
 			const fullReleaseNotes = release.notes.trim() ? `\n\n${release.notes.trim()}` : '';
 			const MAX_RELEASE_NOTES_LENGTH = 1000;
 			const truncateReleaseNotes = fullReleaseNotes.length > MAX_RELEASE_NOTES_LENGTH;
